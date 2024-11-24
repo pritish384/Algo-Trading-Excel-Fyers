@@ -50,6 +50,7 @@ To start using the Algo-Trading-Excel-Fyers tool, follow these steps:
 
 3. **Set Up Your Strategy in Excel**:
     - Run the `main.py` file.
+    - **Note: The Excel file Algo-Trading-Excel-Fyers.xlsx is automatically generated when you successfully login through main.py**
     - Open the Excel sheet named `Algo-Trading-Excel-Fyers.xlsx`.
     - Define the symbols and order parameters in the Excel sheet.
     - All the Live data will be updated in the Excel sheet.
