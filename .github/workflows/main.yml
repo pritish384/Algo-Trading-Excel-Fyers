@@ -20,7 +20,5 @@ jobs:
 
       - name: Add Public Remote and Push
         run: |
-          git remote add public https://$PUBLIC_REPO_TOKEN@github.com/pritish384/Algo-Trading-Excel-Fyers.git
+          git remote add public https://${{secrets.PUBLIC_REPO_TOKEN}}@github.com/pritish384/Algo-Trading-Excel-Fyers.git
           git push public main --force
-        env:
-          PUBLIC_REPO_TOKEN: ${{secrets.PUBLIC_REPO_TOKEN}}
