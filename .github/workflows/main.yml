@@ -1,0 +1,23 @@
+name: Sync to Public Repo
+
+on:
+  push:
+    branches:
+      - main  # Trigger workflow when changes are pushed to 'main' branch
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Private Repo
+        uses: actions/checkout@v3
+
+      - name: Push to Public Repo
+        env:
+          PUBLIC_REPO_TOKEN: ${{ secrets.PUBLIC_REPO_TOKEN }}
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+          git remote add public https://$PUBLIC_REPO_TOKEN@github.com/pritish384/Algo-Trading-Excel-Fyers.git
+          git push public main --force
