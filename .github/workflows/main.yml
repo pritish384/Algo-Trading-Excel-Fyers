@@ -1,0 +1,28 @@
+name: Sync Repositories
+
+on:
+  push:
+    branches:
+      - main  # Trigger this workflow on push to the 'main' branch
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write  # Allow write access to the repository contents
+      pull-requests: write  # Allow write access to pull requests
+
+    steps:
+      - name: Checkout Private Repo
+        uses: actions/checkout@v3
+
+      - name: Set Git Config
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+
+      - name: Add Public Remote and Push
+        run: |
+          git remote add public https://github.com/pritish384/Algo-Trading-Excel-Fyers.git
+          git push public main --force
