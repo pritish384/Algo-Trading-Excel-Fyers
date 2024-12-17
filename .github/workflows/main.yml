@@ -8,7 +8,11 @@ on:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    
+
+    permissions:
+      contents: write  # Allow write access to the repository contents
+      pull-requests: write  # Allow write access to pull requests
+
     steps:
       - name: Checkout Private Repo
         uses: actions/checkout@v3
@@ -20,5 +24,5 @@ jobs:
 
       - name: Add Public Remote and Push
         run: |
-          git remote add public https://${{secrets.PUBLIC_REPO_TOKEN}}@github.com/pritish384/Algo-Trading-Excel-Fyers.git
+          git remote add public https://${{ secrets.PUBLIC_REPO_TOKEN }}@github.com/pritish384/Algo-Trading-Excel-Fyers.git
           git push public main --force
